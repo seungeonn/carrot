@@ -1,6 +1,6 @@
 import '../../style/post.scss'
 import ImgUpload from './Edit';
-import InputPrice from './inputPrice';
+import InputPrice from './InputPrice';
 import { ObjectId } from 'mongodb';
 import { connectDB } from '@/util/database';
 
