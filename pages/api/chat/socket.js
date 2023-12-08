@@ -10,7 +10,7 @@ export const config = {
 export default async (req, res) => {
   if (!res.socket.server.io) {
     
-    const httpServer = 'https://carrot-plum.vercel.app/';
+    const httpServer = res.socket.server;
     const io = new Server(httpServer, {
       path: "/api/chat/socket",
     });
