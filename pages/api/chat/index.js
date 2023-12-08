@@ -14,6 +14,6 @@ export default async (req, res) => {
     res.socket.server.io.emit('message', message);
 
 
-    res.status(200).json(message);
+    res.status(200).redirect(302, '/chat/chatRoom/'+ message.chatRoomId);
   }
 };
