@@ -1,0 +1,117 @@
+.navbar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  box-shadow: 1px 1px 10px #ccc;
+  width: 100%;
+  // height: 100%;
+  z-index: 9999;
+  position: fixed; left: 0; top: 0;
+  background: #fff;
+
+  a{
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 0 10px;
+  }
+
+  .logo{
+    color: #E25113;
+    font-weight:800;
+    letter-spacing: 1px;
+    font-size: 2rem;
+  }
+
+  .left{
+
+    display: flex;
+    align-items: center;
+
+    .loginSuccess{
+      display: flex;
+      align-items: center;
+      gap: 0 10px;
+      padding-right: 10px;
+
+      .userName{
+        font-size: 1.4rem;
+        span{
+          color: #E25113;
+          font-weight: 600;
+        }
+      }
+
+      button{
+        border: 0;
+        background: #e1e0e0;
+        padding: 3px 5px;
+        border-radius: 5px;
+        font-size: 1.2rem;
+      }
+    }
+    
+    .btn{
+      margin-right: 10px;
+
+      .register{
+        a{
+          font-size: 1.3rem;
+          font-weight: normal;
+          padding: 0;
+          &:hover{
+            color: #E25113;
+          }
+        }
+      }
+      
+      button{
+        background: none;
+        border: 0;
+        cursor: pointer;
+
+        &:hover {
+          color: #E25113;
+        }
+      }  
+
+      span{margin: 0 5px; font-size: 1.3rem;}
+    }
+    
+    .searchBar{
+      height: 100%;
+      padding-right: 20px;
+      // position: absolute; right: 0;
+    
+    
+      form{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        
+        input{
+          width: 200px;
+          height: 40px;
+          background: #f3f3f3;
+          border: 0;
+          border-radius: 7px;
+          padding-left: 10px;
+      
+          &:focus{
+            outline: 0;
+          }
+        }
+      
+        button{
+          padding: 0 5px;
+          border: 0;
+          font-size: 1.6rem;
+          position: absolute; right: 30px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+

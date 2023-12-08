@@ -1,0 +1,92 @@
+.post{
+  h2{text-align: center; margin: 20px 0; font-size: 2.3rem;}
+
+form{
+  width: 50%;
+  margin: 0 auto;
+}
+
+label{
+  display: block;
+  margin-bottom: 15px;
+  text-align: left;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+input, textarea{
+  width: 100%;
+  height: 40px;
+  margin-bottom: 50px;
+  padding-left: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+
+  &:focus{
+    outline: 2px solid #E25113;
+    border: 0;
+  }
+}
+
+
+
+.content{
+  height: 150px;
+}
+
+.btn{
+  display: block;
+  margin: auto;
+  width: 40%;
+  height: 50px;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  background: #E25113;
+  cursor: pointer;
+}
+
+
+.Upload{
+  display: none
+}
+
+.item{
+  width: auto;
+  height: 300px;
+  display: flex;
+}
+
+.box{
+  flex: none;
+  width: 23%;
+  margin: auto;
+  height: 180px;
+  border: 1px solid #ccc;
+  border-radius: 7px;
+}
+
+.box:first-child{
+  font-size: 5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  .imgNum{
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+  }
+}
+
+.img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.mb{
+  font-size: 1rem;
+}
+}
