@@ -14,7 +14,7 @@ export default function ChatRoom({session, chatRoomId, result}) {
 
   useEffect(()=>{
     // connect to socket server
-    const socket = SocketIOClient.connect('https://carrot-plum.vercel.app', {
+    const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_API_URL, {
       path: "/api/chat/socket"
     });
 

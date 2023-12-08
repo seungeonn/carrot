@@ -1,5 +1,5 @@
-import { Server } from "socket.io";
-import { connect } from "socket.io-client";
+// import { Server } from "socket.io";
+import { Server } from "http";
 
 export const config = {
   api: {
