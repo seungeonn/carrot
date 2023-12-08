@@ -14,7 +14,7 @@ export default function ChatRoom({session, chatRoomId, result}) {
 
   useEffect(()=>{
     // connect to socket server
-    const socket = SocketIOClient.connect('https://carrot-plum.vercel.app/', {
+    const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_API_URL, {
       path: "/api/chat/socket"
     });
 
@@ -42,10 +42,12 @@ export default function ChatRoom({session, chatRoomId, result}) {
     if (socket) return () => socket.disconnect();
   }, [])
   
-  const sendMessageHandler = 
+  const sendMessageHandler = useCallback(
     (event) => {
       setSendMessage(event.target.value);
-    }
+    },
+    [sendMessage]
+  );
   const enterKeyPress = (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
       // send message
