@@ -11,7 +11,6 @@ export default async function page(props) {
 
   const db = (await connectDB).db('carrotChat')
   let result = await db.collection(chatRoomId).find().toArray()
-  console.log(result);
   
   return (
     <ChatRoom session={session} chatRoomId={chatRoomId} result={result}></ChatRoom>
