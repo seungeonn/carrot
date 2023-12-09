@@ -14,6 +14,6 @@ export default async (req, res) => {
     res.socket.server.io.emit('message', message);
 
 
-    res.status(201).end();
+    res.status(201).json(message);
   }
 };
