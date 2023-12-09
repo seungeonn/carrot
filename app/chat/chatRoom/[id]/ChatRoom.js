@@ -1,21 +1,43 @@
 'use client'
 
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
+import SocketIOClient from "socket.io-client";
 
 export default function ChatRoom({session, chatRoomId, result}) {
 
-  let router = useRouter()
   const [sendMessage, setSendMessage] = useState("");
   const [connected, setConnected] = useState(false);
-  const [chat, setChat] = useState([]);
+  // const [chat, setChat] = useState(result);
+  const chat = result
 
-  let [newChat, setNewChat] = useState(result)
+  let [newChat, setNewChat] = useState([])
 
   useEffect(()=>{
+    // connect to socket server
+    const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_API_URL, {
+      path: "/api/chat/socket"
+    });
 
-  },[])
+    // log socket connection
+    socket.on("connect", () => {
+      console.log("SOCKET CONNECTED!", socket.id);
+      setConnected(true);
+    });
+
+    
+    
+    // update chat on new message dispatched
+    socket.on("message", (message) => {
+      // newChat.push(message);
+      // setChat((prevChat) => [...prevChat, message]);
+      newChat.push(message);
+      setNewChat([...newChat]);
+    });
+    
+    // socket disconnect on component unmount if exists
+    if (socket) return () => socket.disconnect();
+  }, [])
   
   const sendMessageHandler = useCallback(
     (event) => {
@@ -23,7 +45,6 @@ export default function ChatRoom({session, chatRoomId, result}) {
     },
     [sendMessage]
   );
-
   const enterKeyPress = (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
       // send message
@@ -45,9 +66,8 @@ export default function ChatRoom({session, chatRoomId, result}) {
         message: sendMessage
       };
 
-      const response = await axios.post("/api/chat/chatDb", message);
+      const response = await axios.post("/api/chat", message);
       setSendMessage("");
-      setNewChat((prevChat) => [...prevChat, response.data]);
     }
   };
   
@@ -62,11 +82,12 @@ export default function ChatRoom({session, chatRoomId, result}) {
           ))
         )
         :(
-          <div className="alert-message">No Chat Messages</div>
+          <div className="alert-message">메세지가 없습니다!</div>
         )}
       </div>
       <div className="sendMsg">
-        <input type="text" value={sendMessage} onChange={sendMessageHandler} onKeyUp={enterKeyPress}/>
+        <input type="text" value={sendMessage} onChange={sendMessageHandler} onKeyUp={enterKeyPress}
+        placeholder={connected ? "입력해주세요!" : "연결중입니다..."} />
 
         <button type="submit" onClick={submitSendMessage}></button>
       </div>
