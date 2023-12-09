@@ -1,9 +1,14 @@
 {
-  "routes": {
-    "/api/*": {
+  "routes": [
+    {
+      "src": "/api/.*",
       "methods": ["GET", "POST"],
       "allowHeaders": ["Content-Type"],
       "allowCredentials": true
+    },
+    {
+      "src": "/.*",
+      "dest": "/index.html"
     }
-  }
+  ]
 }
