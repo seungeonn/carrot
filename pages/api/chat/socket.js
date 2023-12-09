@@ -15,6 +15,13 @@ export default async (req, res) => {
     const httpServer = res.socket.server;
     const io = new Server(httpServer, {
       path: "/api/chat/socket",
+      cors: {
+        origin: "https://carrot-plum.vercel.app",
+        methods: ["GET", "POST"],
+        allowedHeaders: ["Content-Type"],
+        credentials: true,
+      },
+
     });
 
     // Connection 이벤트 리스너 등록
