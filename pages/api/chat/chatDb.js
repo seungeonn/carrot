@@ -9,7 +9,7 @@ export default async function handler (req, res) {
       sendId : message.userId,
       message : message.message
     })
-    
+    console.log('nn');
     
     res.status(200).json(message);
   }
