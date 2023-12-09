@@ -14,7 +14,7 @@ export default async (req, res) => {
     
     const httpServer = res.socket.server;
     const io = new Server(httpServer, {
-      path: "https://carrot-plum.vercel.app/api/chat/socket",
+      path: "/api/chat/socket",
     });
 
     // Connection 이벤트 리스너 등록

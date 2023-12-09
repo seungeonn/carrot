@@ -17,5 +17,7 @@ export default async (req, res) => {
 
 
     res.status(201).json(message);
+  } else {
+    res.status(405).json({ success: false, message: 'index.js에서 실패' })
   }
 };
