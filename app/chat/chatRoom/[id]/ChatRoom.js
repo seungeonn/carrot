@@ -1,3 +1,5 @@
+// app/chat/chatRoom/ChatRoom.js
+
 'use client'
 
 import axios from "axios";
@@ -8,6 +10,7 @@ export default function ChatRoom({session, chatRoomId, result}) {
 
   const [sendMessage, setSendMessage] = useState("");
   const [connected, setConnected] = useState(false);
+  const [joinedRoom, setJoinedRoom] = useState(false); // 방에 조인 여부 상태 추가
   // const [chat, setChat] = useState(result);
   const chat = result
 
@@ -16,13 +19,23 @@ export default function ChatRoom({session, chatRoomId, result}) {
   useEffect(()=>{
     // connect to socket server
     const socket = SocketIOClient.connect(process.env.NEXT_PUBLIC_API_URL, {
-      path: "/api/chat/socket"
+      path: "https://carrot-plum.vercel.app/api/chat/socket"
     });
 
     // log socket connection
     socket.on("connect", () => {
       console.log("SOCKET CONNECTED!", socket.id);
       setConnected(true);
+
+      socket.emit("join", { room: chatRoomId });
+      console.log("join");
+      setJoinedRoom(true);
+      console.log(joinedRoom);
+    });
+
+    // 방에 조인 여부 확인
+    socket.on("joinedRoom", () => {
+
     });
 
     
@@ -74,6 +87,9 @@ export default function ChatRoom({session, chatRoomId, result}) {
   return (
     <div className="chatRoom">
       <div className="chat">
+      {joinedRoom && (
+          <div className="alert-message">방에 조인되었습니다!</div>
+        )}
         {newChat.length ? (
           newChat.map((a, i) => (
             <div className="chat-message" key={i}>

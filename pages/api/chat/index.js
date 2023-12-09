@@ -1,3 +1,5 @@
+// pages/api/chat/index.js
+
 import { connectDB } from "@/util/database";
 
 export default async (req, res) => {
