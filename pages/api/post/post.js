@@ -6,6 +6,7 @@ export default async function handler(req, res) {
 
   let session = await getServerSession(req, res ,authOptions)
   const db = (await connectDB).db('carrot')
+  const db2 = (await connectDB).db('carrotComment')
   
   
   req.body.email = session.user.email
@@ -15,5 +16,9 @@ export default async function handler(req, res) {
   
   await db.collection('post').insertOne(req.body)
 
-  res.status(200).redirect(302, '/')
+  let result = await db.collection('post').findOne(req.body)
+
+  await db2.createCollection(String(result._id))
+
+  res.status(200).redirect(302, '/detail/' + String(result._id))
 }

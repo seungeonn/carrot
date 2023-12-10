@@ -112,6 +112,57 @@
       }
       
     }
+
+
+    
+  }
+
+  .commentArea{
+    width: 100%;
+    height: auto;
+    border-top: 1px solid #ccc;
+    margin-top: 30px;
+    padding-top: 30px;
+
+    h2{font-size: 2rem; color: #E25113; margin-bottom: 20px;}
+
+    .commentBox{
+
+      .comment{
+        margin: 10px 0;
+        padding: 10px;
+        background: #f8f8f8;
+        border-radius: 7px;
+
+        .userComment{
+          font-size: 1.4rem;
+          span{
+            font-weight: bold;
+          }
+          margin-bottom: 3px;
+        }
+      }
+    }
+
+    form{
+      display: flex;
+      border-radius: 7px;
+      input{
+        flex: 9;
+        border: 2px solid #E25113;
+        height: 40px;
+        border-radius: 7px 0px 0px 7px ;
+        padding-left: 10px;
+        &:focus{outline: 0;}
+      }
+      button{
+        flex: 1;
+        background: #E25113;
+        border: 0;
+        color: #fff;
+        border-radius: 0 7px 7px 0 ;
+      }
+    }
   }
   
 }
