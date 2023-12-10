@@ -27,16 +27,16 @@ export default function ChatRoom({session, chatRoomId, result}) {
       console.log("SOCKET CONNECTED!", socket.id);
       setConnected(true);
 
-      socket.emit("join", { room: chatRoomId });
-      console.log("join");
-      setJoinedRoom(true);
-      console.log(joinedRoom);
+      // socket.emit("join", { room: chatRoomId });
+      // console.log("join");
+      // setJoinedRoom(true);
+      // console.log(joinedRoom);
     });
 
     // 방에 조인 여부 확인
-    socket.on("joinedRoom", () => {
+    // socket.on("joinedRoom", () => {
 
-    });
+    // });
 
     
     
