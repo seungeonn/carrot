@@ -49,7 +49,7 @@ export default function ChatRoom({session, chatRoomId, result}) {
     });
     
     // socket disconnect on component unmount if exists
-    // if (socket) return () => socket.disconnect();
+    if (socket) return () => socket.disconnect();
   }, [])
   
   const sendMessageHandler = useCallback(
