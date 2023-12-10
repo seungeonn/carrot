@@ -33,7 +33,7 @@ export const config = {
 export default (req, res) => {
   if (!res.socket.server.io) {
     // Express 서버에 WebSocket 설정 추가
-    httpServer.listen('https://elegant-cat-5ee04e.netlify.app', () => {
+    httpServer.listen(3001, () => {
       console.log('WebSocket server is running on port 3001');
     });
 
