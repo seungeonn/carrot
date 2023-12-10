@@ -1,7 +1,6 @@
 // pages/api/chat/socket.js
 
-// import { Server } from "socket.io";
-import { Server } from "http";
+import { Server } from "socket.io";
 
 export const config = {
   api: {
@@ -12,7 +11,7 @@ export const config = {
 export default async (req, res) => {
   if (!res.socket.server.io) {
     
-    const httpServer = res.socket.server;
+    const httpServer = 'https://elegant-cat-5ee04e.netlify.app';
     const io = new Server(httpServer, {
       path: "/api/chat/socket",
       cors: {
