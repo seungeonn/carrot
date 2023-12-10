@@ -14,7 +14,11 @@ export default async (req, res) => {
     
     const httpServer = res.socket.server;
     const io = new Server(httpServer, {
-      path: "/api/chat/socket"
+      path: "/api/chat/socket",
+      cors: {
+        origin: "https://elegant-cat-5ee04e.netlify.app",
+        methods: ["GET", "POST"]
+      },
 
     });
 

@@ -10,7 +10,7 @@ export default function ChatRoom({session, chatRoomId, result}) {
 
   const [sendMessage, setSendMessage] = useState("");
   const [connected, setConnected] = useState(false);
-  const [joinedRoom, setJoinedRoom] = useState(false); // 방에 조인 여부 상태 추가
+  // const [joinedRoom, setJoinedRoom] = useState(false); // 방에 조인 여부 상태 추가
   // const [chat, setChat] = useState(result);
   const chat = result
 
