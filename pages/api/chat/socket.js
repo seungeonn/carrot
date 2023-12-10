@@ -1,7 +1,7 @@
 // pages/api/chat/socket.js
 
-// import { Server } from "socket.io";
-import { Server } from "http";
+import { Server } from "socket.io";
+// import { Server } from "http";
 
 export const config = {
   api: {
@@ -16,7 +16,7 @@ export default async (req, res) => {
     const io = new Server(httpServer, {
       path: "/api/chat/socket",
       cors: {
-        origin: "https://carrot-plum.vercel.app",
+        origin: "https://elegant-cat-5ee04e.netlify.app",
         methods: ["GET", "POST"],
         allowedHeaders: ["Content-Type"],
         credentials: true,
