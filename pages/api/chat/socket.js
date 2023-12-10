@@ -1,6 +1,28 @@
-// pages/api/chat/socket.js
 
-import { Server } from "socket.io";
+import { createServer } from 'http';
+import { Server } from 'socket.io';
+
+const httpServer = createServer();
+const io = new Server(httpServer, {
+  cors: {
+    origin: "https://elegant-cat-5ee04e.netlify.app",
+  },
+});
+
+// io.on('connection', (socket) => {
+//   console.log(`A user connected: ${socket.id}`);
+
+//   // Handle 'message' event
+//   socket.on('message', (message) => {
+//     // Broadcast the message to all connected clients
+//     io.emit('message', message);
+//   });
+
+//   // Handle 'disconnect' event
+//   socket.on('disconnect', () => {
+//     console.log(`A user disconnected: ${socket.id}`);
+//   });
+// });
 
 export const config = {
   api: {
@@ -8,50 +30,14 @@ export const config = {
   },
 };
 
-export default async (req, res) => {
+export default (req, res) => {
   if (!res.socket.server.io) {
-    
-    const httpServer = res.socket.server;
-    const io = new Server(httpServer, {
-      path: "/api/chat/socket",
-      cors: {
-        origin: "https://elegant-cat-5ee04e.netlify.app"
-      },
-
+    // Express 서버에 WebSocket 설정 추가
+    httpServer.listen(3001, () => {
+      console.log('WebSocket server is running on port 3001');
     });
 
-    // Connection 이벤트 리스너 등록
-    // io.on("connection", (socket) => {
-    //   console.log(`A user connected: ${socket.id}`);
-
-    //   // Join 이벤트 처리
-    //   socket.on("join", (data) => {
-    //     socket.join(data.room);
-    //     console.log(`Socket ${socket.id} joined room ${data.room}`);
-
-    //     // 클라이언트에게 방에 조인되었다는 신호 전송
-    //     socket.emit("joinedRoom");
-
-    //     // 클라이언트가 조인한 방의 정보 확인
-    //     const joinedRooms = Array.from(socket.rooms);
-    //     console.log(`Socket ${socket.id} joined rooms: ${joinedRooms}`);
-    //   });
-
-    //   // Disconnect 이벤트 리스너 등록
-    //   socket.on("disconnect", () => {
-    //     console.log(`A user disconnected: ${socket.id}`);
-    //   });
-
-    //   // 메시지 이벤트 처리
-    //   socket.on("message", (message) => {
-    //     // 클라이언트가 조인한 방으로 메시지 브로드캐스트
-    //     socket.to(message.chatRoomId).emit("message", message);
-    //   });
-    // });
-
-
     res.socket.server.io = io;
-
   }
 
   res.end();
