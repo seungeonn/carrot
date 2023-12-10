@@ -11,7 +11,7 @@ export const config = {
 export default async (req, res) => {
   if (!res.socket.server.io) {
     
-    const httpServer = 'https://elegant-cat-5ee04e.netlify.app';
+    const httpServer = res.socket.server;
     const io = new Server(httpServer, {
       path: "/api/chat/socket",
       cors: {
