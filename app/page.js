@@ -9,6 +9,9 @@ export default async function Home() {
 
   return (
     <div className="main">
+
+      <h2>중고거래를 시작하세요!</h2>
+      
       <div className="contents">
         {
           result.map((a,i)=>

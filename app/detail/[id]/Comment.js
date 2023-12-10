@@ -28,7 +28,7 @@ export default function Comment({result2 , session, postId , result}) {
           result2.map((a,i)=>{
             return (
               <div className="comment" key={i}>
-              <div className="userComment"> <span>{String(session.user._id) == String(result.user_id) ? '작성자'  : a.userNickname} : </span> {a.comment}</div>
+              <div className="userComment"> <span>{a.userNickname} : </span> {a.comment}</div>
               <div className="userDate">{a.date}</div>
             </div>
             )

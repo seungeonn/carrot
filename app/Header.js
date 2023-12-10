@@ -16,9 +16,9 @@ export default function Header({session}) {
       {/* <Link href="/chat/chatList">
         채팅
       </Link> */}
-      <Link href="/write">
+      {/* <Link href="/write">
         이모저모
-      </Link>
+      </Link> */}
     </div>
 
     <div className="left">
@@ -28,7 +28,7 @@ export default function Header({session}) {
         <div className='loginSuccess'>
           <div className='userName'><span>{session.user.nickname}</span> 님 안녕하세요!</div>
           {/* <div className='mypage'> 마이페이지</div> */}
-          <button onClick={()=>{signOut()}}>로그아웃</button>
+          <button onClick={()=>{signOut()}} style={{cursor : 'pointer'}}>로그아웃</button>
         </div>
         
       : 
@@ -39,12 +39,12 @@ export default function Header({session}) {
         </div>
       }
       
-      <div className='searchBar'>
-        <form action="/api/test">
-          <input type="text" />
+      {/* <div className='searchBar'>
+        <form action="/api/search" method='POST'>
+          <input type="text" name='search' />
           <button type='submit'>🔎</button>
         </form>
-      </div>
+      </div> */}
     </div>
     
   </div>
