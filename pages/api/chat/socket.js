@@ -4,7 +4,7 @@ import { Server } from "socket.io";
 
 export const config = {
   api: {
-    bodyParser: false,
+    bodyParser: true,
   },
 };
 
@@ -15,8 +15,7 @@ export default async (req, res) => {
     const io = new Server(httpServer, {
       path: "/api/chat/socket",
       cors: {
-        origin: "https://elegant-cat-5ee04e.netlify.app",
-        methods: ["GET", "POST"]
+        origin: "https://elegant-cat-5ee04e.netlify.app"
       },
 
     });
