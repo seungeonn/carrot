@@ -87,9 +87,9 @@ export default function ChatRoom({session, chatRoomId, result}) {
   return (
     <div className="chatRoom">
       <div className="chat">
-      {joinedRoom && (
+      {/* {joinedRoom && (
           <div className="alert-message">방에 조인되었습니다!</div>
-        )}
+        )} */}
         {newChat.length ? (
           newChat.map((a, i) => (
             <div className="chat-message" key={i}>
