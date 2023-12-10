@@ -18,7 +18,7 @@ export default function ChatRoom({session, chatRoomId, result}) {
 
   useEffect(()=>{
     // connect to socket server
-    const socket = SocketIOClient('https://elegant-cat-5ee04e.netlify.app', {
+    const socket = SocketIOClient.connect('https://elegant-cat-5ee04e.netlify.app', {
       path: "/api/chat/socket"
     }); 
 
@@ -49,7 +49,7 @@ export default function ChatRoom({session, chatRoomId, result}) {
     });
     
     // socket disconnect on component unmount if exists
-    if (socket) return () => socket.disconnect();
+    // if (socket) return () => socket.disconnect();
   }, [])
   
   const sendMessageHandler = useCallback(
