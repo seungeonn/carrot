@@ -19,7 +19,7 @@ export default function ChatRoom({session, chatRoomId, result}) {
   useEffect(()=>{
     // connect to socket server
     const socket = SocketIOClient('https://elegant-cat-5ee04e.netlify.app', {
-      path: "/api/chat/socket", transports: ['websocket']
+      path: "/api/chat/socket"
     }); 
 
     // log socket connection
