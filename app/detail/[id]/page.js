@@ -70,7 +70,7 @@ export default async function Detail(props) {
     <Comment result2={result2} session={session} postId={props.params.id} result={result}></Comment>
 
   </div>
-
+  
   : <Login></Login>
   )
 }
